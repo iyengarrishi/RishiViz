@@ -1,9 +1,9 @@
 /**
  * @author Rishi Iyengar
  */
-
+	// 3. Create a function to input the data for my second visualization, customize the options and render the chart
 function loadData4(){
-
+	// 4. This visualization contains only one chart, and I have formatted my data again as an array of arrays
 	var myDataTable = google.visualization.arrayToDataTable([
           ['Year', 'Subway', 'Metro North', 'LIRR', 'Buses'],
           ['2003',0.70069,0.602892015,0.472779274,0.441647],
@@ -20,26 +20,25 @@ function loadData4(){
 
         ]);
 
-	//Tell it to create a line chart, and give it the location
+	// 5. Create the chart and put it in the assigned div
 	var myChart = new google.visualization.ColumnChart(document.getElementById("recoveryDiv"));
-
+	// 6. In the chart options, I set width, height and color. I also adjusted the scale on the vertical axis to 0 
 	var options = {
-          title: "Farebox Recovery Ratio", width: 900, height: 500, colors:['#636363','#2ca25f','#3182bd','#e34a33']
+          title: "Farebox Recovery Ratio", width: 900, height: 500, colors:['#636363','#2ca25f','#3182bd','#e34a33'], vAxis:{baseline:0}
    		};
-
+	// 7. Render the chart
 	myChart.draw(myDataTable, options);
 
 }
-
-
+	//8. And that's a wrap!
+	
+	// 2. Add the Google charts package to create my visualization and set a callback function *COMMENTS CONTINUE AT TOP OF CODE*
 function loadPage(){
 	
 	console.log("Document ready");
 	
 	google.load("visualization", "1", {packages:["corechart"], callback:"loadData4"});
 	
-
-	
-}
-	
+	}
+	// 1. Create a document ready function to fire when my page is loaded
 $(document).ready(loadPage);
