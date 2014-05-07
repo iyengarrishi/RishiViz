@@ -1,9 +1,10 @@
 /**
  * @author Rishi Iyengar
  */
-
+	// 3. In this function, I input the data for my first chart (right-most on the page) and render the chart
 function loadData(){
-
+	//4. Create a variable to pull my data from an array of arrays. Since I have a limited amount of static data,
+	//	I will input it directly instead of using a Google Fusion Table (although that is also an option)
 	var myDataTable = google.visualization.arrayToDataTable([
           ['Year', 'Bus', 'Subway', 'Metro North', 'LIRR'],
           ['2003',29.25557763,43.84008752,11.59076715,15.31356771],
@@ -18,18 +19,22 @@ function loadData(){
 		  ['2012',34.11029491,42.18312909,10.59821716,13.10835884]
         ]);
 
-	//Tell it to create a line chart, and give it the location
+	// 5. Now I create a Column Chart using the google visualization library, and direct it to the div I created for it
 	var myChart = new google.visualization.ColumnChart(document.getElementById("expenseDiv"));
-
+	// 6. These are my chart options, where I give my chart a title, a width within my container div and make a stacked chart
+	//	I also customized the colors of the bars, and removed the default legend that Google Viz provides
 	var options = {
-          title: "Contribution to Operating Expenses", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
+          title: "% Share of Operating Expenses", width: 300, height: 500, isStacked:true, hAxis:{showTextEvery:3},
           colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position: 'none'}
        	}
-
+	// 7. And finally, I render the chart on the page
 	myChart.draw(myDataTable, options);
+	// 8. Once this is done, I create a function for my second chart and repeat the same process from steps 3. through 7. 
+	// 	With different data and function names, of course. 
+	loadData2();
 
 }
-
+	//9. This function renders my second chart (middle chart on the page)
 function loadData2(){
 
 	var myDataTable = google.visualization.arrayToDataTable([
@@ -48,18 +53,20 @@ function loadData2(){
 		  
         ]);
 
-	//Tell it to create a line chart, and give it the location
+	
 	var myChart = new google.visualization.ColumnChart(document.getElementById("revenueDiv"));
 
 	var options = {
-          title: "Contribution to Fare Revenues", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
+          title: "% Share of Fare Revenues", width: 300, height: 500, isStacked:true, hAxis:{showTextEvery:3},
           colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position:'none'}
         };
 
 	myChart.draw(myDataTable, options);
+	
+	loadData3();
 
 }
-
+	// 10. Finally, I create my third chart with the ridership data (left-most on the page)
 function loadData3(){
 
 	var myDataTable = google.visualization.arrayToDataTable([
@@ -79,28 +86,27 @@ function loadData3(){
 		  	
         ]);
 
-	//Tell it to create a line chart, and give it the location
+	
 	var myChart = new google.visualization.ColumnChart(document.getElementById("riderDiv"));
-
+	// 11. One exception on the options for this chart: I want a common legend for all three charts here
+	//	So I use the Google Viz documentation to position it on the right of the left-most chart.
 	var options = {
-          title: "Contribution to Ridership", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
-          colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position: 'right', textStyle: {color: 'black', fontSize: 10}}
+          title: "% Share of Ridership", width: 300, height: 500, isStacked:true, hAxis:{showTextEvery:3},
+          colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position: 'right', textStyle: {color: 'black', fontSize: 8}}
         };
 
 	myChart.draw(myDataTable, options);
 
 }
+	//12. And that's a wrap!
 
+	// 2. Add the Google charts package to create my visualization and set a callback function *COMMENTS CONTINUE AT TOP OF CODE*
 
 function loadPage(){
 	console.log("Document ready");
 	
 	google.load("visualization", "1", {packages:["corechart"], callback:"loadData"});
 	
-	google.load("visualization", "1", {packages:["corechart"], callback:"loadData2"});
-	
-	google.load("visualization", "1", {packages:["corechart"], callback:"loadData3"});
-	
 	}
-
+	// 1. Create a document ready function to fire when my page is loaded
 $(document).ready(loadPage);
