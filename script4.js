@@ -23,7 +23,7 @@ function loadData(){
 
 	var options = {
           title: "Contribution to Operating Expenses", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
-          colors:['#e34a33','#2ca25f','#3182bd','#8856a7']
+          colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position: 'none'}
        	}
 
 	myChart.draw(myDataTable, options);
@@ -53,7 +53,7 @@ function loadData2(){
 
 	var options = {
           title: "Contribution to Fare Revenues", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
-          colors:['#e34a33','#2ca25f','#3182bd','#8856a7']
+          colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position:'none'}
         };
 
 	myChart.draw(myDataTable, options);
@@ -84,7 +84,7 @@ function loadData3(){
 
 	var options = {
           title: "Contribution to Ridership", width: 400, height: 500, isStacked:true, hAxis:{showTextEvery:3},
-          colors:['#e34a33','#2ca25f','#3182bd','#8856a7']
+          colors:['#e34a33', '#636363', '#2ca25f','#3182bd'], legend:{position: 'right', textStyle: {color: 'black', fontSize: 10}}
         };
 
 	myChart.draw(myDataTable, options);
